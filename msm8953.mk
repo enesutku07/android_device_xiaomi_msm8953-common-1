@@ -69,7 +69,7 @@ PRODUCT_COPY_FILES += \
 
 # ANT
 PRODUCT_PACKAGES += \
-    AntHalService \
+#    AntHalService \
     com.dsi.ant.antradio_library \
     libantradio
 
@@ -98,7 +98,6 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_mixer_paths.xml \
 	$(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml \
 	$(LOCAL_PATH)/audio/audio_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer.txt
-
 # XML Audio configuration files
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
@@ -113,8 +112,8 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
     camera.msm8953 \
-    libmm-qcamera \
-    Snap
+    libmm-qcamera #\
+#    Snap
 
 # Configstore
 PRODUCT_PACKAGES += \
@@ -140,8 +139,8 @@ PRODUCT_PACKAGES += \
     libtinyxml
 
 # Doze mode
-PRODUCT_PACKAGES += \
-    XiaomiDoze
+#PRODUCT_PACKAGES += \
+#    XiaomiDoze
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -157,7 +156,7 @@ PRODUCT_PACKAGES += \
 
 # FM
 PRODUCT_PACKAGES += \
-    FMRadio \
+#    FMRadio \
     libfmjni
 
 # Gatekeeper HAL
@@ -213,6 +212,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
+
 # Keymaster HAL
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
@@ -238,6 +238,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
+
 
 # Netutils
 PRODUCT_PACKAGES += \
@@ -304,16 +305,15 @@ PRODUCT_PACKAGES += \
     android.hardware.secure_element@1.0 \
     librmnetctl \
     libcnefeatureconfig \
-    libxml2 \
-    telephony-ext
+    libxml2 #\
+#    telephony-ext
 
-PRODUCT_BOOT_JARS += \
-    telephony-ext
+#PRODUCT_BOOT_JARS += \
+#    telephony-ext
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
-
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
@@ -376,10 +376,8 @@ PRODUCT_PACKAGES += \
     libqsap_sdk \
     libQWiFiSoftApCfg \
     libwpa_client \
-    hostapd \
     dhcpcd.conf \
     wificond \
-    wpa_supplicant \
     wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
@@ -387,9 +385,55 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
+    $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
+
+# Halium/UBports
+
+# Ubuntu
+#PRODUCT_PACKAGES += \
+#    libbiometry_fp_api \
+#    libubuntu_application_api \
+#    libmedia_compat_layer
+    
+# init scripts
+PRODUCT_PACKAGES += \
+    init.halium.rc
+
+# Misc
+PRODUCT_PACKAGES += \
+    libandroid \
+    libandroid_runtime \
+    android.frameworks.displayservice@1.0 \
+    drmserver \
+    mediadrmserver \
+    mediaextractor \
+    miniafservice \
+    minisfservice
+
+# Ubuntu Touch overlay
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/halium-overlay/70-oxygen.rules:system/halium/lib/udev/rules.d/70-android.rules \
+#    $(LOCAL_PATH)/halium-overlay/scaling.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
+#    $(LOCAL_PATH)/rootdir/on-post-fs.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/on-post-fs.rc \
+#    $(LOCAL_PATH)/rootdir/on-post-fs-data.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/on-post-fs-data.sh \
+#    $(LOCAL_PATH)/halium-overlay/etc/init/mtp-state.conf:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/mtp-state.conf \
+#    $(LOCAL_PATH)/halium-overlay/etc/init/ssh.override:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/ssh.override \
+#    $(LOCAL_PATH)/halium-overlay/etc/init/usb-tethering.conf:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/usb-tethering.conf \
+#    $(LOCAL_PATH)/halium-overlay/etc/ofono/main.conf:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/ofono/main.conf \
+#    $(LOCAL_PATH)/halium-overlay/etc/ofono/ril_subscription.conf:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/ofono/ril_subscription.conf \
+#    $(LOCAL_PATH)/halium-overlay/etc/profile.d/halium-9.sh:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/profile.d/halium-9.sh \
+#    $(LOCAL_PATH)/halium-overlay/usr/share/apparmor/hardware/graphics.d/apparmor-easyprof-ubuntu_android9:$(TARGET_COPY_OUT_SYSTEM)/halium/usr/share/apparmor/hardware/graphics.d/apparmor-easyprof-ubuntu_android9 \
+#    $(LOCAL_PATH)/halium-overlay/usr/share/powerd/device_configs/config-default.xml:$(TARGET_COPY_OUT_SYSTEM)/halium/usr/share/powerd/device_configs/config-default.xml \
+#    $(LOCAL_PATH)/halium-overlay/usr/share/upstart/sessions/mtp-server.conf:$(TARGET_COPY_OUT_SYSTEM)/halium/usr/share/upstart/sessions/mtp-server.conf \
+#    $(LOCAL_PATH)/halium-overlay/usr/share/usbinit/setupusb:$(TARGET_COPY_OUT_SYSTEM)/halium/usr/share/usbinit/setupusb \
+#    $(LOCAL_PATH)/halium-overlay/usr/bin/anbox-tool:$(TARGET_COPY_OUT_SYSTEM)/halium/usr/bin/anbox-tool \
+#    $(LOCAL_PATH)/halium-overlay/etc/init/lxc-android-config.override:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/lxc-android-config.override \
+#    $(LOCAL_PATH)/halium-overlay/etc/init/mount-android.conf:$(TARGET_COPY_OUT_SYSTEM)/halium/etc/init/mount-android.conf \
+#    $(LOCAL_PATH)/halium-overlay/usr/sbin/mount-android.sh:$(TARGET_COPY_OUT_SYSTEM)/halium/usr/sbin/mount-android.sh \
+#    $(LOCAL_PATH)/halium-overlay/vendor/lib64/libhdr_tm.so:$(TARGET_COPY_OUT_SYSTEM)/halium/vendor/lib64/libhdr_tm.so
+
 # Wi-Fi Display
-PRODUCT_BOOT_JARS += \
-    WfdCommon
+#PRODUCT_BOOT_JARS += \
+#    WfdCommon
